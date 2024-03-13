@@ -1,0 +1,8 @@
+Esta práctica de laboratorio contiene una vulnerabilidad de inyección SQL en el filtro de categoría de producto. 
+Cuando el usuario selecciona una categoría, la aplicación realiza una consulta SQL como la siguiente:
+
+SELECT * FROM products WHERE category = 'Gifts' AND released = 1
+
+Para resolver la práctica de laboratorio, 
+realice un ataque de inyección SQL que haga que la aplicación muestre uno o más productos inéditos.
+
