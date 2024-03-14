@@ -1,4 +1,4 @@
-- Retrieving multiple values within a single column
+Lab: SQL injection UNION attack, retrieving multiple values in a single column
 
 SQL injection vulnerability in the product category filter
 

