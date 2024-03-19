@@ -1,5 +1,3 @@
-arkansas
-matthew
 carlos
 root
 admin
