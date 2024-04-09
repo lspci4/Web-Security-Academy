@@ -1,0 +1,18 @@
+Lab: Unprotected admin functionality
+APPRENTICE
+
+This lab has an unprotected admin panel.
+
+Solve the lab by deleting the user carlos.
+
+Análisis:
+--------
+1. Fuzzin with feroxbuster
+
+$ feroxbuster -u https://0a45000b0402e34383d0e11100580020.web-security-academy.net  -x pdf -x js,html,aspx -x php txt json,docx -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --extract-links --filter-status 404,403,500 
+
+Found url:
+https://0a45000b0402e34383d0e11100580020.web-security-academy.net/administrator-panel
+
+
+2. Delelte user carlos
