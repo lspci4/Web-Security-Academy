@@ -1,0 +1,17 @@
+Lab: Unprotected admin functionality with unpredictable URL
+
+Solved
+This lab has an unprotected admin panel. It's located at an unpredictable location, but the location is disclosed somewhere in the application.
+
+Solve the lab by accessing the admin panel, and using it to delete the user carlos.
+
+Análisis:
+--------
+
+1. Busqueda del panel de administración
+
+adminPanelTag.setAttribute('href', '/admin-8yeak3');
+
+2. Elminación del usuario carlos.
+
+<a href="/admin-8yeak3/delete?username=carlos">Delete</a>
