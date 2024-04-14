@@ -1,0 +1,23 @@
+Lab: User role can be modified in user profile
+
+This lab has an admin panel at /admin. It's only accessible to logged-in users with a roleid of 2.
+
+Solve the lab by accessing the admin panel and using it to delete the user carlos.
+
+You can log in to your own account using the following credentials: wiener:peter
+
+Análisis:
+--------
+
+1. Login con user winier
+<h2>User role can be modified in user profile</h2>
+
+2. Al cambiar de email en la respuesta encuentro el roleid
+
+  "roleid": 1
+
+POST /my-account/change-email
+
+3. Accedo al panel de administracion encontrado al cambiar el roleid: 2
+
+https://0aaf008703e3059c87525c0100a700ea.web-security-academy.net/admin
