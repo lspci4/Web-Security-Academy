@@ -8,13 +8,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 proxies_setting = {'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'}
 
-def get_csrf_token(session, login_url):
-    """Extraigo el CSRF token"""
-    response = session.get(login_url, verify=False, proxies=proxies_setting)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    csrf_token = soup.find('input', {'name': 'csrf'})['value']
-    #print(csrf_token)
-    return csrf_token
+
 
 def get_user_guid(session, base_url):
     
@@ -59,6 +53,13 @@ def submit_answer(session, base_url, pi_key_value):
     else:
         print("[-] error al ingresar el guid")
     
+def get_csrf_token(session, login_url):
+    """Extraigo el CSRF token"""
+    response = session.get(login_url, verify=False, proxies=proxies_setting)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    csrf_token = soup.find('input', {'name': 'csrf'})['value']
+    #print(csrf_token)
+    return csrf_token
 
 def api_key(session, base_url):
     """Login user wiener"""
