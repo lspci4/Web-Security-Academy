@@ -38,7 +38,7 @@ def login(s, url):
 def delete_user(s, url):
     
     if login(s, url):
-           
+        
         # Recibo la cookie de sesion
         session_cookie = s.cookies.get_dict().get('session')
         
@@ -54,7 +54,7 @@ def delete_user(s, url):
             print("[+] Usuario carlos eliminado")
         else:
             print("[-] Usuario no eliminado")      
-              
+
 
 def main():
     if len(sys.argv) != 2:
