@@ -1,0 +1,13 @@
+Lab: Basic SSRF against another back-end system
+
+This lab has a stock check feature which fetches data from an internal system.
+
+To solve the lab, use the stock check functionality to scan the internal 192.168.0.X range for an admin interface on port 8080, then use it to delete the user carlos. 
+
+Análisis para el exploit:
+------------------------
+1. La aplicación corre en http://192.168.0.1:8080/product/stock/check?productId=3&storeId=2
+2. realizo fuzzing sobre 192.168.0.X --> host es encontrado con respuesta 404
+3. ralizo fuzzing para encontrar el panel de administración --> respuesta válida con "Admin panel" en la respuesta.
+3. elimino el usuario carlos desde el panel de admin
+
