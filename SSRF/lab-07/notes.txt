@@ -1,0 +1,11 @@
+Lab: Blind SSRF with Shellshock exploitation
+
+This site uses analytics software which fetches the URL specified in the Referer header when a product page is loaded.
+
+To solve the lab, use this functionality to perform a blind SSRF attack against an internal server in the 192.168.0.X range on port 8080. In the blind attack, use a Shellshock payload against the internal server to exfiltrate the name of the OS user.
+Note
+
+To prevent the Academy platform being used to attack third parties, our firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server.
+
+
+oyqze7fv45xdokj11ksnv4m1nstjh95y.oastify.com
